@@ -97,4 +97,13 @@ await openContextMenu([
 ]);
 ```
 
+When you're opening context menu from a `contextmenu` event listener, you have to prevent the default action otherwise it'll be taken over by the global context menus:
+
+```ts
+someElement.addEventListener('contextmenu', event => {
+	event.preventDefault();
+	contextMenu(...items);
+})
+```
+
 When development mode is enabled, context menu items such as **Toggle devtools** and **Inspect element** are added automatically to every context menu.

@@ -17,26 +17,13 @@ export function resolve(payload: unknown) {
 }
 
 /**
- * Cleans click handlers out of menu constructor options so it can be sent over IPC.
- */
-function cleanClicks(items: MenuItemConstructorOptions[]): MenuItemConstructorOptions[] {
-	return items.map((item) =>
-		('type' in item && item.type === 'separator') || 'role' in item
-			? item
-			: {
-					...item,
-					click: undefined,
-					submenu: Array.isArray(item.submenu) ? cleanClicks(item.submenu) : undefined,
-			  }
-	);
-}
-
-/**
  * Open context menu which resolves with `void` when closed and the clicked
  * item's handler executed.
  */
 export async function openContextMenu(items?: MenuItemConstructorOptions[]) {
-	const path = await ipcRenderer.invoke('open-context-menu', items ? cleanClicks(items) : undefined);
+	// Remove functions and other non-serializable data from items
+	const serializableItems = items ? JSON.parse(JSON.stringify(items)) : undefined;
+	const path = await ipcRenderer.invoke('open-context-menu', serializableItems);
 
 	// Menu closed without any item clicked
 	if (!Array.isArray(path)) return;
@@ -64,6 +51,8 @@ export async function openContextMenu(items?: MenuItemConstructorOptions[]) {
  * Generic global context menus.
  */
 window.addEventListener('contextmenu', (event) => {
+	if (event.defaultPrevented) return;
+
 	event.preventDefault();
 	event.stopPropagation();
 
