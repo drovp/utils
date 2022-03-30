@@ -6,7 +6,7 @@
 	"bugs": "https://github.com/drovp/utils/issues",
 	"repository": "github:drovp/utils",
 	"exports": {
-		"modal-window": "./dist/modal-window.js"
+		"./modal-window": "./dist/modal-window.js"
 	},
 	"keywords": [
 		"drovp",
