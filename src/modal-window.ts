@@ -1,11 +1,10 @@
 const {ipcRenderer, shell, clipboard} = require('electron');
 
 /**
- * Resolves with current modal's window context.
- * Context contains payload the window was spawned with, as well as potential processor dependencies.
+ * Resolves with current modal's window payload.
  */
-export function getContext<P = unknown, D = {[key: string]: unknown}>(): Promise<{payload: P; dependencies: D}> {
-	return ipcRenderer.invoke('get-modal-window-context');
+export function getPayload<Payload = unknown>(): Promise<Payload> {
+	return ipcRenderer.invoke('get-modal-window-payload');
 }
 
 /**

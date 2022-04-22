@@ -29,27 +29,16 @@ Namespaces and their utilities:
 Import with `@drovp/utils/modal-window`:
 
 ```ts
-const {getContext, resolve, openContextMenu} = require('@drovp/utils/modal-window');
+const {getPayload, resolve, openContextMenu} = require('@drovp/utils/modal-window');
 ```
 
 Importing/requiring from this namespace has a side effect of automatically setting up context menus for basic text editing and stuff like Toggle devtools/Inspect element when development mode is enabled.
 
-#### getContext
+#### getPayload
 
-Type: `getContext(): Promise<ModalWindowContext>`
+Type: `getPayload<Payload>(): Promise<Payload>`
 
-Returns ModalWindowContext for current modal window:
-
-```ts
-interface ModalWindowContext {
-	dependencies: {[key: string]: unknown};
-	payload: unknown;
-}
-```
-
-Dependencies are dependency payloads for current processor. Same format as [`dependencies` property on `ProcessorUtils`](https://drovp.app/docs/processor#dependencies).
-
-Payload is whatever you passed into the `openModalWindow(path, payload)` function to open the window. This would usually be the input item payload.
+Retrieves the payload you've passed in when opening this modal window.
 
 #### resolve
 
