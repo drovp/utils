@@ -8,6 +8,13 @@
 	"exports": {
 		"./modal-window": "./dist/modal-window.js"
 	},
+	"typesVersions": {
+		"*": {
+			"modal-window": [
+				"./dist/modal-window.d.ts"
+			]
+		}
+	},
 	"keywords": [
 		"drovp",
 		"util",
