@@ -5,7 +5,7 @@ Various utilities for developing [Drovp](https://drovp.app) plugins.
 ## Install
 
 ```
-npm install @drovp/save-as-path
+npm install @drovp/utils
 ```
 
 ## Usage
@@ -18,13 +18,7 @@ Example importing from `modal-window` namespace:
 const {foo} = require('@drovp/utils/modal-window');
 ```
 
-## Namespaces
-
-Namespaces and their utilities:
-
----
-
-### modal-window
+## modal-window
 
 Import with `@drovp/utils/modal-window`:
 
@@ -34,15 +28,19 @@ const {getPayload, resolve, openContextMenu} = require('@drovp/utils/modal-windo
 
 Importing/requiring from this namespace has a side effect of automatically setting up context menus for basic text editing and stuff like Toggle devtools/Inspect element when development mode is enabled.
 
-#### getPayload
+### getPayload
 
-Type: `getPayload<Payload>(): Promise<Payload>`
+```ts
+function getPayload<Payload>(): Promise<Payload>;
+```
 
 Retrieves the payload you've passed in when opening this modal window.
 
-#### resolve
+### resolve
 
-Type: `resolve(payload: unknown)`
+```ts
+function resolve(payload: unknown): void;
+```
 
 Resolves the current modal window with a payload to make available in your preparator. Example:
 
@@ -58,9 +56,11 @@ Window is closed immediately afterwords.
 
 In case you want to just close the window, which will cause the modal result be `{canceled: true, payload: undefined}`, simply call `window.close()`.
 
-#### openContextMenu
+### openContextMenu
 
-Type: `openContextMenu(items: MenuItemConstructorOptions[]): Promise<void>`
+```ts
+function openContextMenu(items: MenuItemConstructorOptions[]): Promise<void>;
+```
 
 Opens a context menu with `items` in it. `MenuItemConstructorOptions` is a plain object with [Electron's `MenuItem`](https://www.electronjs.org/docs/latest/api/menu-item) properties on it. Resolves with `void` when menu has been closed, and clicked item's handler executed.
 
