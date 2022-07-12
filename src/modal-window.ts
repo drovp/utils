@@ -1,4 +1,10 @@
-import {MenuItemConstructorOptions, OpenDialogOptions, OpenDialogReturnValue, SaveDialogOptions} from '@drovp/types';
+import {
+	MenuItemConstructorOptions,
+	OpenDialogOptions,
+	OpenDialogReturnValue,
+	SaveDialogOptions,
+	SaveDialogReturnValue,
+} from '@drovp/types';
 const {ipcRenderer, shell, clipboard} = require('electron');
 
 /**
@@ -27,7 +33,7 @@ export function showOpenDialog(options: OpenDialogOptions) {
  * Electron's save file dialog.
  */
 export function showSaveDialog(options: SaveDialogOptions) {
-	return ipcRenderer.invoke('show-save-dialog', options) as Promise<OpenDialogReturnValue>;
+	return ipcRenderer.invoke('show-save-dialog', options) as Promise<SaveDialogReturnValue>;
 }
 
 /**
