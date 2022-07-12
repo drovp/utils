@@ -1,6 +1,6 @@
 {
 	"name": "@drovp/utils",
-	"version": "2.1.1",
+	"version": "2.1.2",
 	"description": "Utilities for developing drovp plugins.",
 	"homepage": "https://github.com/drovp/utils",
 	"bugs": "https://github.com/drovp/utils/issues",
