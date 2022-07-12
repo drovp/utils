@@ -46,6 +46,6 @@
 		"typescript": "^4.7.4"
 	},
 	"dependencies": {
-		"@drovp/types": "^4.10.2"
+		"@drovp/types": "^4.10.3"
 	}
 }
