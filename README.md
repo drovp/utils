@@ -56,6 +56,22 @@ Window is closed immediately afterwords.
 
 In case you want to just close the window, which will cause the modal result be `{canceled: true, payload: undefined}`, simply call `window.close()`.
 
+### showOpenDialog
+
+```ts
+function showOpenDialog(options: OpenDialogOptions): Promise<OpenDialogReturnValue>;
+```
+
+Electron's [showOpenDialog](https://www.electronjs.org/docs/latest/api/dialog).
+
+### showSaveDialog
+
+```ts
+function showSaveDialog(options: SaveDialogOptions): Promise<OpenDialogReturnValue>;
+```
+
+Electron's [showSaveDialog](https://www.electronjs.org/docs/latest/api/dialog).
+
 ### openContextMenu
 
 ```ts
